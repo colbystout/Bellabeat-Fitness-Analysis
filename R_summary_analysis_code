@@ -1,0 +1,14 @@
+# Producing a summary of each pertinent attribute, using the select command to avoid duplicates
+activitycalories %>%
+    select(TotalSteps, VeryActiveMinutes, FairlyActiveMinutes, 
+           LightlyActiveMinutes, SedentaryMinutes, Calories) %>%
+    summary()
+intensitysteps %>%
+    select(LightActiveDistance, ModeratelyActiveDistance, VeryActiveDistance, StepTotal) %>%
+    summary()
+caloriesintensities %>%
+    select(TotalIntensity, AverageIntensity, Calories) %>%
+    summary()
+sleepday %>%
+    select(TotalSleepRecords, TotalMinutesAsleep, TotalTimeInBed) %>%
+    summary()
