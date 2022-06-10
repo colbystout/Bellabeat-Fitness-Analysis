@@ -1,0 +1,64 @@
+# Attribute Trends
+# Total steps versus calories
+activitycalories %>%
+    ggplot(aes(x=TotalSteps, y=Calories)) +
+    geom_point(alpha = 0.3,  position = position_jitter()) +
+    geom_smooth(method="gam", formula = y ~s(x)) +
+    labs(title="Total Steps Vs. Calories")
+
+# Time in bed versus time sleeping
+sleepday %>%
+    ggplot(aes(x=TotalTimeInBed, y=TotalMinutesAsleep)) +
+    geom_point(alpha = 0.3,  position = position_jitter()) +
+    geom_smooth(method="gam", formula = y ~s(x)) +
+    labs(title="Time in Bed Vs. Time Sleeping") + annotate("text", x=750, y=300,
+        label="too much time in bed without sleeping")
+        
+# Looking at calories burnt vs. average intensity levels
+caloriesintensities %>%
+    ggplot(aes(x=AverageIntensity, y=Calories)) +
+    geom_point(alpha = 0.3,  position = position_jitter()) +
+    geom_smooth(method="gam", formula = y ~s(x))
+
+# Checking sedentary minutes per day vs. calories burnt per day
+activitycalories %>%
+    ggplot(aes(x=Calories, y=SedentaryMinutes)) +
+    geom_point(alpha = 0.3,  position = position_jitter()) +
+    geom_smooth(method="gam", formula = y ~s(x))
+
+#Time Trends
+# Original dailyactivity dataframe needs the 'datetime' format changed back to 'date' for the plot to work
+dailyactivity$ActivityDate <- 
+    as.Date(dailyactivity$ActivityDate)
+
+ggplot(data = 
+       (aggregate(dailyactivity$TotalSteps, by=list(dailyactivity$ActivityDate), mean)
+    ) %>%
+      drop_na(), aes(x=Group.1, y=x, fill=x)) +
+        geom_col() +
+        geom_smooth(method = loess, formula = "y ~ x") +
+        labs(x="Day", y="Average Steps")
+        
+# Creating weekday column
+weekdaysteps <-
+    dailyactivity %>%
+        mutate(weekday = weekdays(ActivityDate)
+)
+# Ordering by weekday in new column
+weekdaysteps$weekday <-
+    ordered(weekdaysteps$weekday, 
+        levels=c("Monday", "Tuesday", "Wednesday", "Thursday",
+        "Friday", "Saturday", "Sunday")
+)
+# Creating weekday mean steps per day summary
+weekdaysteps <- 
+    weekdaysteps %>%
+          group_by(weekday) %>%
+          summarize(dailysteps = mean(TotalSteps)                   
+)
+# Viewing the data in table form
+print(weekdaysteps)
+# Plot!
+ggplot(data = weekdaysteps, aes(x=weekday, y=dailysteps, fill=dailysteps)) +
+    geom_col(
+)
