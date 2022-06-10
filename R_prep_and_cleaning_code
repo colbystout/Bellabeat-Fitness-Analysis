@@ -1,0 +1,46 @@
+# Checking for all distinct user IDs
+n_distinct(dailyactivity$Id)
+n_distinct(dailycalories$Id)
+n_distinct(dailyintensities$Id)
+n_distinct(dailysteps$Id)
+n_distinct(heartrateseconds$Id)
+n_distinct(hourlycalories$Id)
+n_distinct(hourlyintensities$Id)
+n_distinct(hourlysteps$Id)
+n_distinct(sleepday$Id)
+n_distinct(weightlog$Id)
+
+glimpse(dailyactivity)
+glimpse(dailycalories)
+glimpse(dailyintensities)
+glimpse(dailysteps)
+glimpse(hourlycalories)
+glimpse(hourlyintensities)
+glimpse(hourlysteps)
+glimpse(sleepday)
+
+#Converting each date column (formatted as character) to a date-time format with as.POSIXct function 
+dailyactivity$ActivityDate = as.POSIXct(dailyactivity$ActivityDate, format="%m/%d/%Y", tz=Sys.timezone())
+dailycalories$ActivityDay = as.POSIXct(dailycalories$ActivityDay, format="%m/%d/%Y", tz=Sys.timezone())
+dailyintensities$ActivityDay = as.POSIXct(dailyintensities$ActivityDay, format="%m/%d/%Y", tz=Sys.timezone())
+dailysteps$ActivityDay = as.POSIXct(dailysteps$ActivityDay, format="%m/%d/%Y", tz=Sys.timezone())
+hourlycalories$ActivityHour = as.POSIXct(hourlycalories$ActivityHour, format="%m/%d/%Y %I:%M:%S %p", tz=Sys.timezone())
+hourlyintensities$ActivityHour = as.POSIXct(hourlyintensities$ActivityHour, format="%m/%d/%Y %I:%M:%S %p", tz=Sys.timezone())
+sleepday$SleepDay=as.POSIXct(sleepday$SleepDay, format="%m/%d/%Y %I:%M:%S %p", tz=Sys.timezone())
+hourlysteps$ActivityHour = as.POSIXct(hourlysteps$ActivityHour, format="%m/%d/%Y %I:%M:%S %p", tz=Sys.timezone())
+
+head(dailycalories)
+head(hourlysteps)
+head(sleepday)
+
+# joining daily activity and daily calories
+activitycalories <- full_join(dailyactivity, dailycalories, by=c("Id", "Calories"))
+# joining daily intensity with daily steps
+intensitysteps <- full_join(dailyintensities, dailysteps, by=c("Id", "ActivityDay"))
+# joining hourly calories with hourly intensities
+caloriesintensities <- full_join(hourlycalories, hourlyintensities, by=c("Id", "ActivityHour"))
+
+# Previewing the new tables
+head(activitycalories)
+head(intensitysteps)
+head(caloriesintensities)
