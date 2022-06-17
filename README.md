@@ -3,7 +3,7 @@
 
 ### Contents
 
-1. Four separate sequences of R code, for those who want to just see my code
+1. Four separate sequences of R code, for those who want to see only my code
 2. R Notebook detailing the full project
 
 ### Project Overview
