@@ -7,7 +7,8 @@
 
 1. Four separate sequences of R code, for those who want to see only my code
 2. R Notebook detailing the full project
-**Please use the Kaggle link for best operation of the Kernel**
+
+**(Please use the Kaggle link for best operation of the Kernel)**
 
 ### Project Overview
 
