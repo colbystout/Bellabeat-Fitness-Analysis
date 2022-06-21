@@ -1,10 +1,12 @@
 # Bellabeat Fitness Analysis
 ## Google Data Analytics Professional Certificate Case Study
 
+## [Link to Kaggle R Notebook](https://www.kaggle.com/code/colbystout/case-study-bellabeat-fitness)
+
 ### Contents
 
 1. Four separate sequences of R code, for those who want to see only my code
-2. R Notebook detailing the full project
+2. R Notebook detailing the full project 
 
 ### Project Overview
 
