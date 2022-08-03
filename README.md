@@ -6,9 +6,9 @@
 ### Contents
 
 1. Four separate sequences of R code, for those who want to see only my code
-2. R Notebook detailing the full project
+2. .ipynb Jupyter Notebook detailing the full project
 
-**(Please use the Kaggle link for best operation of the Kernel)**
+**Use the Kaggle link for easiest viewing of the input and output cells of the code.**
 
 ### Project Overview
 
