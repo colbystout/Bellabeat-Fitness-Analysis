@@ -5,7 +5,7 @@
 
 ### Contents
 
-1. Four separate sequences of R code, for those who want to see only my code
+1. Four separate sequences of R code, in the "R Code" folder, for those who want to see only my code
 2. .ipynb Jupyter Notebook detailing the full project
 
 **Use the Kaggle link for easiest viewing of the input and output cells of the code.**
